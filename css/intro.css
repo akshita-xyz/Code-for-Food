@@ -1,0 +1,51 @@
+/* Intro animation styles */
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* INTRO */
+.intro {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  z-index: 1000;
+  animation: zoomIn 1s ease;
+}
+
+.left, .right {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* IMPORTANT PATH */
+.left {
+  background-image: url('../assets/introfoodLEFT.jpg');
+  background-position: right center;
+}
+
+.right {
+  background-image: url('../assets/introfoodRIGHT.jpg');
+  background-position: left center;
+}
+
+/* ANIMATION */
+.animate .left {
+  animation: moveLeft 1.5s forwards;
+}
+
+.animate .right {
+  animation: moveRight 1.5s forwards;
+}
+
+@keyframes moveLeft {
+  to { transform: translateX(-100%); }
+}
+
+@keyframes moveRight {
+  to { transform: translateX(100%); }
+}
