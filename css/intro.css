@@ -13,9 +13,11 @@ body {
   display: flex;
   z-index: 1000;
   animation: zoomIn 1s ease;
+  pointer-events: none;
 }
 
-.left, .right {
+.left,
+.right {
   width: 50%;
   height: 100%;
   background-size: cover;
@@ -43,9 +45,13 @@ body {
 }
 
 @keyframes moveLeft {
-  to { transform: translateX(-100%); }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes moveRight {
-  to { transform: translateX(100%); }
+  to {
+    transform: translateX(100%);
+  }
 }
