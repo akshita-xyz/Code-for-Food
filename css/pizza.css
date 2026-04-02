@@ -12,6 +12,10 @@
 #pizza {
     filter: drop-shadow(0px 25px 35px rgba(0, 0, 0, 0.85));
     cursor: crosshair;
-    height: 110vh; /* Dramatically scales up the pizza size */
-    margin-right: 5vw; /* Sets padding from the right edge */
+    height: 160vh;
+    /* Scaled up a very little bit more */
+    margin-right: -2vw;
+    /* Pulled a very, very little bit more towards the left */
+    margin-top: -2vh;
+    /* Nudged a very, very little bit towards the top */
 }
