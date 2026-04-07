@@ -1,5 +1,5 @@
 const canvas = document.getElementById("pizza");
-const ctx = canvas.getContext("2d", { alpha: false });
+const ctx = canvas.getContext("2d");
 
 const cx = 400;
 const cy = 400;
@@ -259,29 +259,7 @@ canvas.addEventListener("mouseleave", () => {
     mouse.py = -1000;
 });
 
-// ----------------------------
-// Pre-render Background Layer
-// ----------------------------
-const bgCanvas = document.createElement('canvas');
-bgCanvas.width = 800;
-bgCanvas.height = 800;
-const bgCtx = bgCanvas.getContext('2d');
-bgCtx.fillStyle = '#0a0a0a';
-bgCtx.fillRect(0, 0, 800, 800);
 
-let pizzaAnimStarted = false;
-const pizzaBg = new Image();
-function startPizzaAnimation() {
-  if (pizzaAnimStarted) return;
-  pizzaAnimStarted = true;
-  animate();
-}
-pizzaBg.onload = () => {
-  bgCtx.drawImage(pizzaBg, 0, 0, 800, 800);
-  startPizzaAnimation();
-};
-pizzaBg.onerror = () => startPizzaAnimation();
-pizzaBg.src = 'assets/pizza2.jpg';
 
 // ----------------------------
 // Render Loop
@@ -291,7 +269,7 @@ const repRadSq = repulsionRadius * repulsionRadius;
 const returnSpeed = 0.22;
 
 function animate() {
-    ctx.drawImage(bgCanvas, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     let abx = mouse.x - mouse.px;
     let aby = mouse.y - mouse.py;
@@ -369,4 +347,5 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Animation starts after pizza2.jpg loads (see pizzaBg.onload)
+// Start animation
+animate();

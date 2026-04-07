@@ -1,6 +1,7 @@
-/* pizza container for interactive component */
 #pizza-container {
-    background: radial-gradient(circle at center, #2a2a2a 0%, #080808 100%);
+    position: relative;
+    background: #150a06;
+    /* very dark brown */
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -9,8 +10,26 @@
     overflow: hidden;
 }
 
+.pizza-hero-graphic {
+    position: absolute;
+    left: 8vw;
+    top: 58%;
+    /* moved slightly down from 50% */
+    transform: translateY(-58%);
+    z-index: 10;
+    pointer-events: none;
+    /* Let clicks pass through to the pizza if they overlap */
+}
+
+.hero-logo {
+    width: clamp(10px, 75vw, 1600px);
+    /* even bigger */
+    max-height: 90vh;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+}
+
 #pizza {
-    filter: drop-shadow(0px 25px 35px rgba(0, 0, 0, 0.85));
     cursor: crosshair;
     height: 160vh;
     /* Scaled up a very little bit more */

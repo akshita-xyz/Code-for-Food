@@ -1,4 +1,8 @@
 /* Main styles */
+body {
+  background-color: #150a06;
+  margin: 0;
+}
 #main {
   height: 100vh;
   display: flex;
