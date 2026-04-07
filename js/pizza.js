@@ -269,7 +269,19 @@ const bgCtx = bgCanvas.getContext('2d');
 bgCtx.fillStyle = '#0a0a0a';
 bgCtx.fillRect(0, 0, 800, 800);
 
-
+let pizzaAnimStarted = false;
+const pizzaBg = new Image();
+function startPizzaAnimation() {
+  if (pizzaAnimStarted) return;
+  pizzaAnimStarted = true;
+  animate();
+}
+pizzaBg.onload = () => {
+  bgCtx.drawImage(pizzaBg, 0, 0, 800, 800);
+  startPizzaAnimation();
+};
+pizzaBg.onerror = () => startPizzaAnimation();
+pizzaBg.src = 'assets/pizza2.jpg';
 
 // ----------------------------
 // Render Loop
@@ -357,5 +369,4 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Start simulation only when imported or ready
-animate();
+// Animation starts after pizza2.jpg loads (see pizzaBg.onload)

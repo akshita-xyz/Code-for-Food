@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/intro.css">
   <link rel="stylesheet" href="css/pizza.css">
+  <link rel="stylesheet" href="css/home-pizza-img.css">
 </head>
 <!-- code section -->
 <body>
@@ -23,6 +24,30 @@
 
   <!-- MAIN -->
   <div id="main">
+    <div class="home-pizza-corner">
+      <button type="button" class="home-pizza-trigger" aria-expanded="false" aria-controls="home-pizza-overlay" aria-haspopup="dialog">
+        <img class="home-pizza-thumb" src="assets/pizza2.jpg" alt="Open menu" width="280" height="280">
+      </button>
+    </div>
+    <div id="home-pizza-overlay" class="home-pizza-overlay" role="dialog" aria-modal="true" aria-labelledby="home-pizza-overlay-title" hidden>
+      <div class="home-pizza-o-clip">
+        <div class="home-pizza-sheet">
+          <h2 id="home-pizza-overlay-title" class="visually-hidden">Site navigation</h2>
+          <nav class="home-pizza-sheet-nav home-pizza-sheet-nav--left" aria-label="Primary">
+            <a href="#">Home</a>
+            <a href="#">Menu</a>
+          </nav>
+          <div class="home-pizza-spin-wrap">
+            <img class="home-pizza-spin-img" src="assets/pizza2.jpg" alt="" width="320" height="320">
+          </div>
+          <nav class="home-pizza-sheet-nav home-pizza-sheet-nav--right" aria-label="More">
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+          </nav>
+          <button type="button" class="home-pizza-close" aria-label="Close menu">&times;</button>
+        </div>
+      </div>
+    </div>
     <div id="pizza-container">
       <canvas id="pizza" width="800" height="800"></canvas>
     </div>
@@ -32,6 +57,7 @@
   <script src="js/intro.js"></script>
   <script src="js/main.js"></script>
   <script src="js/pizza.js"></script>
+  <script src="js/home-pizza-img.js"></script>
 
 </body>
 

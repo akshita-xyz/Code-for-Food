@@ -1,0 +1,158 @@
+/* Corner: static pizza opens full overlay (spin + side nav only inside overlay). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.home-pizza-corner {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 50;
+}
+
+.home-pizza-trigger {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.home-pizza-trigger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.home-pizza-thumb {
+  display: block;
+  width: clamp(72px, 12vw, 140px);
+  height: auto;
+  border-radius: 50%;
+}
+
+/* Overlay: expand-from-corner reveal + fade */
+.home-pizza-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.72);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.home-pizza-overlay:not([hidden]) {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.35s ease, visibility 0s linear 0s;
+}
+
+.home-pizza-o-clip {
+  position: relative;
+  width: min(92vw, 720px);
+  max-height: min(85vh, 560px);
+  clip-path: circle(0% at 0% 0%);
+  transition: clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-pizza-overlay:not([hidden]) .home-pizza-o-clip {
+  /* Expand from top-left (near corner button) */
+  clip-path: circle(150% at 0% 0%);
+}
+
+.home-pizza-sheet {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 2.5rem);
+  min-height: min(50vh, 360px);
+  padding: 2rem 3rem;
+  background: radial-gradient(circle at center, #2a2a2a 0%, #0d0d0d 100%);
+  border-radius: 1rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.home-pizza-sheet-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 1.05rem;
+  z-index: 1;
+}
+
+.home-pizza-sheet-nav a {
+  color: #f5f5f5;
+  text-decoration: none;
+  text-shadow: 0 1px 2px #000;
+  white-space: nowrap;
+}
+
+.home-pizza-sheet-nav a:hover {
+  text-decoration: underline;
+}
+
+.home-pizza-spin-wrap {
+  flex-shrink: 0;
+  line-height: 0;
+  border-radius: 50%;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.home-pizza-spin-img {
+  display: block;
+  width: clamp(120px, 28vw, 220px);
+  height: auto;
+  border-radius: 50%;
+}
+
+.home-pizza-overlay:not([hidden]) .home-pizza-spin-img {
+  animation: home-pizza-panel-spin 3s linear infinite;
+}
+
+@keyframes home-pizza-panel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.home-pizza-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.65rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.home-pizza-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.home-pizza-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
